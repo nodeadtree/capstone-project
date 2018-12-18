@@ -48,11 +48,12 @@ RUN cd /tmp && \
     \
     apk del .build-dependencies && \
 rm -rf /tmp/*
+RUN apk add freetype-dev libpng-dev 
 RUN pip3 install matplotlib
 RUN pip3 install json-tricks
 
 
-RUN apk add freetype-dev libpng-dev cabal ghc texlive-full
+RUN apk add cabal ghc texlive-full
 RUN cabal update
 RUN echo "@edge http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories
 RUN cabal install pandoc pandoc-citeproc
